@@ -1,0 +1,10 @@
+# Common ignores
+node_modules
+.next/
+.DS_Store
+
+# Environment variables
+.env*.local
+
+# Build output
+out/

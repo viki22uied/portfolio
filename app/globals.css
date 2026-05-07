@@ -1,0 +1,611 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+:root {
+  --bg-primary: #f4f4f2;
+  --bg-secondary: #ecece8;
+  --bg-tertiary: #ddddd7;
+  --text-primary: #16181d;
+  --text-secondary: #4a505b;
+  --border-color: rgba(20, 22, 28, 0.16);
+  --gold: #d4af37;
+  --amber: #f59e0b;
+  --shadow-gold: rgba(212, 175, 55, 0.24);
+}
+
+html.dark {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: rgba(249, 250, 251, 0.14);
+  --gold: #d4af37;
+  --amber: #f59e0b;
+  --shadow-gold: rgba(212, 175, 55, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans, "Inter", sans-serif);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+.system-section {
+  position: relative;
+  padding: 6rem 1.5rem;
+}
+
+.system-shell {
+  background: color-mix(in srgb, var(--bg-secondary) 94%, black 6%);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  backdrop-filter: blur(6px);
+}
+
+.gold-border {
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, var(--border-color) 45%);
+}
+
+.gold-glow-hover {
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.gold-glow-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -20px var(--shadow-gold);
+  border-color: color-mix(in srgb, var(--gold) 70%, white 30%);
+}
+
+.section-grid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(212, 175, 55, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+.section-scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(212, 175, 55, 0.04) 3px
+  );
+  pointer-events: none;
+}
+
+.terminal-panel {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+.theme-transition * {
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.section-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* ══════════════════════════════════════════════════
+   Interactive Selector – buttery-smooth version
+   ══════════════════════════════════════════════════ */
+
+.is-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.is-header {
+  width: 100%;
+  max-width: 38rem;
+  padding: 0 1.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.is-heading {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.is-subheading {
+  margin-top: 0.75rem;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* wrapper holds arrows + strip */
+.is-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+}
+
+/* ── Arrow buttons ── */
+.is-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 15, 0.55);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 0.25s ease, border-color 0.25s ease,
+    transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.is-arrow:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.is-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.is-arrow--left {
+  left: -56px;
+}
+
+.is-arrow--right {
+  right: -56px;
+}
+
+@media (max-width: 1100px) {
+  .is-arrow--left { left: 8px; }
+  .is-arrow--right { right: 8px; }
+  .is-arrow {
+    width: 36px;
+    height: 36px;
+    background: rgba(10, 10, 15, 0.7);
+  }
+}
+
+/* ── Panel strip ── */
+.is-strip {
+  display: flex;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+@media (max-width: 640px) {
+  .is-strip { height: 320px; }
+}
+
+/* ── Individual panel ── */
+.is-panel {
+  position: relative;
+  min-width: 60px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid var(--border-color, #292929);
+  /* THE MAGIC — cubic-bezier for that elastic, buttery feel */
+  transition:
+    flex 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.5s ease;
+  will-change: flex;
+}
+
+.is-panel--active {
+  border-color: var(--gold, #d4af37);
+  z-index: 5;
+}
+
+/* Background image layer — separate for GPU-composited scale */
+.is-panel__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Bottom gradient shadow */
+.is-panel__gradient {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  height: 150px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+  opacity: 0;
+  transition: bottom 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.is-panel__gradient--visible {
+  bottom: 0;
+  opacity: 1;
+}
+
+/* Label row at bottom */
+.is-panel__label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Icon circle */
+.is-panel__icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(20, 20, 25, 0.8);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.4s ease, background 0.4s ease;
+}
+
+.is-panel--active .is-panel__icon {
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(20, 20, 25, 0.9);
+}
+
+/* Text */
+.is-panel__text {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.is-panel__title {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.is-panel__desc {
+  display: block;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+}
+
+/* ── Project card mini (below selector) ── */
+.project-card-mini {
+  padding: 0.875rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--bg-secondary) 90%, black 10%);
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.project-card-mini:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--gold) 50%, var(--border-color) 50%);
+  box-shadow: 0 12px 24px -12px var(--shadow-gold);
+}
+
+/* ─────────────── Projects Section ─────────────── */
+
+.project-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Project Card */
+.project-card {
+  background: color-mix(in srgb, var(--bg-secondary) 94%, black 6%);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px -16px var(--shadow-gold),
+    0 0 0 1px color-mix(in srgb, var(--gold) 40%, transparent 60%);
+  border-color: color-mix(in srgb, var(--gold) 50%, var(--border-color) 50%);
+}
+
+.project-card-image {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-tertiary);
+}
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.project-card:hover .project-card-overlay {
+  opacity: 1;
+}
+
+/* ─────────── Project Modal ─────────── */
+
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  animation: modalFadeIn 0.3s ease;
+}
+
+.project-modal {
+  position: relative;
+  width: 100%;
+  max-width: 72rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--border-color) 65%);
+  background: var(--bg-secondary);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5),
+    0 0 60px -15px var(--shadow-gold);
+  animation: modalSlideUp 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--bg-primary) 90%, black 10%);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-modal-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 10%, var(--bg-primary) 90%);
+}
+
+.project-modal-grid {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .project-modal-grid {
+    grid-template-columns: 1.3fr 1fr;
+    padding: 2.5rem;
+  }
+}
+
+/* Modal Media */
+.project-modal-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-modal-tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.project-modal-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.project-modal-tab:hover {
+  border-color: var(--gold);
+  color: var(--text-primary);
+}
+
+.project-modal-tab.active {
+  background: color-mix(in srgb, var(--gold) 15%, transparent 85%);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.project-modal-gallery,
+.project-modal-video {
+  animation: tabFadeIn 0.3s ease;
+}
+
+/* Modal Info */
+.project-modal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Action Buttons */
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.625rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.project-btn-primary {
+  background: var(--gold);
+  color: #0a0a0f;
+  border: 1px solid var(--gold);
+}
+
+.project-btn-primary:hover {
+  background: color-mix(in srgb, var(--gold) 85%, white 15%);
+  box-shadow: 0 8px 24px -8px var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+.project-btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.project-btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll offset for fixed navbar */
+:target {
+  scroll-margin-top: 5rem;
+}
+
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Cursor blink for typewriter */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 0.8s step-end infinite;
+}
