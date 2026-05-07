@@ -98,17 +98,20 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                className="relative text-sm transition-colors duration-200"
+                className="relative text-sm transition-all duration-200"
                 style={{
                   color: isActive ? "var(--gold)" : "var(--text-secondary)",
+                  fontWeight: isActive ? 600 : 400,
+                  textShadow: isActive ? "0 0 12px rgba(212,175,55,0.4)" : "none",
                 }}
               >
                 {link.label}
                 <span
-                  className="absolute -bottom-1 left-0 h-[2px] w-full origin-left transition-transform duration-300"
+                  className="absolute -bottom-1.5 left-0 h-[3px] w-full origin-left rounded-full transition-transform duration-300"
                   style={{
                     background: "var(--gold)",
                     transform: isActive ? "scaleX(1)" : "scaleX(0)",
+                    boxShadow: isActive ? "0 0 8px rgba(212,175,55,0.5)" : "none",
                   }}
                 />
               </a>

@@ -86,11 +86,15 @@ export function Hero() {
       </div>
 
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-500"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-opacity duration-500 cursor-pointer"
         style={{ opacity: scrollIndicatorVisible ? 1 : 0 }}
+        onClick={() => document.getElementById("achievements")?.scrollIntoView({ behavior: "smooth" })}
       >
-        <div className="h-10 w-[2px] bg-[var(--gold)]/40" />
-        <div className="h-2 w-2 animate-bounce rounded-full bg-[var(--gold)]" />
+        <p className="text-xs uppercase tracking-[0.25em] text-[var(--gold)] animate-pulse">Scroll Down</p>
+        <div className="relative flex flex-col items-center">
+          <div className="h-10 w-[2px] rounded-full bg-gradient-to-b from-[var(--gold)]/60 to-transparent" />
+          <div className="mt-1 h-2.5 w-2.5 animate-bounce rounded-full bg-[var(--gold)] shadow-[0_0_10px_rgba(212,175,55,0.5)]" />
+        </div>
       </div>
     </section>
   );

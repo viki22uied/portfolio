@@ -105,13 +105,21 @@ export function PortfolioAssistant() {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-5 z-[80]">
+    <div className="fixed bottom-5 right-5 z-[80] flex flex-col items-end gap-2">
+      {/* Tooltip hint - shows briefly then hides */}
+      {!open && (
+        <div className="assistant-hint rounded-lg border border-[var(--gold)]/30 bg-[var(--bg-secondary)] px-3 py-1.5 text-xs text-[var(--gold)] shadow-lg backdrop-blur-md">
+          Ask me anything ✨
+        </div>
+      )}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--bg-secondary)] text-[var(--gold)] shadow-[0_0_18px_rgba(212,175,55,0.24)] transition-transform duration-200 hover:scale-110"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--bg-secondary)] text-[var(--gold)] shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-200 hover:scale-110 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]"
         aria-label="Toggle Portfolio Assistant"
       >
-        <MessageSquare size={18} />
+        {/* Pulsing ring */}
+        <span className="absolute inset-0 rounded-full border-2 border-[var(--gold)]/40 animate-ping" style={{ animationDuration: "2s" }} />
+        <MessageSquare size={20} />
       </button>
       {open && (
         <aside className="mt-3 w-[min(360px,calc(100vw-24px))] rounded-xl border border-[var(--border-color)] bg-[color-mix(in_srgb,var(--bg-secondary)_90%,black_10%)] p-4 shadow-xl backdrop-blur-md">

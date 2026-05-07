@@ -609,3 +609,16 @@ body {
 .cursor-blink {
   animation: blink 0.8s step-end infinite;
 }
+
+/* Portfolio Assistant hint tooltip */
+.assistant-hint {
+  animation: hintPulse 6s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes hintPulse {
+  0% { opacity: 0; transform: translateY(8px); }
+  8% { opacity: 1; transform: translateY(0); }
+  70% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
