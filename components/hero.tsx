@@ -5,7 +5,19 @@ import dynamic from "next/dynamic";
 
 const HeroScene = dynamic(() => import("@/components/scenes/hero-scene").then((m) => m.HeroScene), { ssr: false });
 
-const roles = ["Data Analyst", "Finance Analyst", "ML Engineer", "FinTech Builder"];
+const roles = ["Quant Researcher", "AI Engineer", "FinTech Builder", "Alpha Researcher"];
+
+const tickerItems = [
+  "WorldQuant GOLD",
+  "IQC 2026 — Top 20% Globally",
+  "80,000+ Participants Beaten",
+  "142 Countries Competed",
+  "SEBI Top 30 National",
+  "IEEE Published",
+  "Logitech Top 50 Global",
+  "IIT Madras 1st Runner-Up",
+  "Mumbai Hacks Top 100",
+];
 
 export function Hero() {
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -13,7 +25,6 @@ export function Hero() {
   const [roleText, setRoleText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [scrollIndicatorVisible, setScrollIndicatorVisible] = useState(true);
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +35,6 @@ export function Hero() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
@@ -44,56 +54,116 @@ export function Hero() {
     return () => clearTimeout(timeout);
   }, [roleText, isDeleting, roleIndex]);
 
+  const doubledTicker = [...tickerItems, ...tickerItems];
+
   return (
-    <section id="home" className="section-reveal relative flex min-h-screen items-center px-6 pt-24 md:pt-28">
+    <section id="home" className="section-reveal relative flex min-h-screen flex-col items-center justify-between px-6 pt-24 md:pt-28">
       <div ref={canvasRef} className="absolute inset-0 transition-opacity duration-200">
         <HeroScene />
       </div>
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10">
-        <div className="max-w-3xl">
-          <p className="mb-5 text-sm uppercase tracking-[0.3em] text-[var(--gold)]">Data Analyst · Finance · AI</p>
-          <h1 className="text-5xl font-semibold leading-tight text-[var(--text-primary)] md:text-7xl">I turn data into decisions</h1>
-          <p className="mt-6 text-lg text-[var(--text-secondary)] md:text-xl">Vignesh Kumar U — Data Analyst | Finance | AI</p>
 
-          <p className="mt-3 text-lg text-[var(--gold)]">
-            {roleText}<span className="inline-block w-[2px] animate-pulse bg-[var(--gold)]" style={{ height: "1.1em", verticalAlign: "text-bottom" }} />
+      {/* Main content */}
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center gap-10">
+        <div className="max-w-3xl">
+          <p
+            className="mb-5 font-mono text-sm uppercase tracking-[0.3em]"
+            style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+          >
+            Quant Researcher · AI Engineer · FinTech Builder
+          </p>
+          <h1
+            className="text-5xl font-semibold leading-tight md:text-7xl"
+            style={{ color: "var(--text-primary)", letterSpacing: "-0.02em" }}
+          >
+            VIGNESH KUMAR U
+          </h1>
+          <p
+            className="mt-6 font-mono text-lg md:text-xl"
+            style={{ color: "var(--text-secondary)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+          >
+            Bengaluru, India · Presidency University · May 2026
+          </p>
+
+          <p
+            className="mt-3 text-lg"
+            style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+          >
+            {roleText}
+            <span
+              className="inline-block w-[2px] animate-pulse"
+              style={{ height: "1.1em", verticalAlign: "text-bottom", background: "var(--gold)" }}
+            />
           </p>
         </div>
         <div className="flex flex-wrap gap-4">
-
           <a
             href="#projects"
             onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }}
-            className="rounded-md border border-[var(--gold)] bg-[var(--gold)] px-6 py-3 text-sm font-medium text-[#0a0a0f] shadow-[0_12px_24px_-16px_var(--shadow-gold)] transition-all duration-200 hover:shadow-[0_16px_32px_-12px_var(--shadow-gold)]"
+            className="rounded-md border px-6 py-3 text-sm font-medium text-[#0a0a0a] shadow-[0_12px_24px_-16px_var(--shadow-gold)] transition-all duration-200 hover:shadow-[0_16px_32px_-12px_var(--shadow-gold)]"
+            style={{ borderColor: "var(--gold)", background: "var(--gold)" }}
           >
             View Projects
           </a>
           <a
-            href="#contact"
-            onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-            className="rounded-md border border-[var(--gold)] px-6 py-3 text-sm font-medium text-[var(--gold)] transition-all duration-200 hover:bg-[rgba(212,175,55,0.08)]"
+            href="#quant"
+            onClick={(e) => { e.preventDefault(); document.getElementById("quant")?.scrollIntoView({ behavior: "smooth" }); }}
+            className="rounded-md border px-6 py-3 text-sm font-medium transition-all duration-200"
+            style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
           >
-            Contact
+            Alpha Dashboard
           </a>
           <a
             href="/resume.pdf"
             download
-            className="rounded-md border border-[var(--border-color)] px-6 py-3 text-sm font-medium text-[var(--text-secondary)] transition-all duration-200 hover:border-[var(--gold)] hover:text-[var(--gold)]"
+            className="rounded-md border px-6 py-3 text-sm font-medium transition-all duration-200 hover:border-[var(--gold)] hover:text-[var(--gold)]"
+            style={{ borderColor: "var(--border-color)", color: "var(--text-secondary)" }}
           >
             Download Resume
           </a>
         </div>
       </div>
 
+      {/* Ticker tape */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-opacity duration-500 cursor-pointer"
+        className="relative z-10 w-full overflow-hidden border-t py-3"
+        style={{ borderColor: "var(--border-color)", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)" }}
+      >
+        <div className="ticker-track">
+          {doubledTicker.map((item, i) => (
+            <span
+              key={i}
+              className="mr-10 text-xs uppercase"
+              style={{
+                color: "var(--gold)",
+                fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                letterSpacing: "0.18em",
+              }}
+            >
+              {item}
+              <span className="mx-5" style={{ color: "var(--amber)" }}>◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-opacity duration-500 cursor-pointer"
         style={{ opacity: scrollIndicatorVisible ? 1 : 0 }}
         onClick={() => document.getElementById("achievements")?.scrollIntoView({ behavior: "smooth" })}
       >
-        <p className="text-xs uppercase tracking-[0.25em] text-[var(--gold)] animate-pulse">Scroll Down</p>
+        <p
+          className="animate-pulse text-xs uppercase tracking-[0.25em]"
+          style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+        >
+          Scroll
+        </p>
         <div className="relative flex flex-col items-center">
-          <div className="h-10 w-[2px] rounded-full bg-gradient-to-b from-[var(--gold)]/60 to-transparent" />
-          <div className="mt-1 h-2.5 w-2.5 animate-bounce rounded-full bg-[var(--gold)] shadow-[0_0_10px_rgba(212,175,55,0.5)]" />
+          <div className="h-10 w-[2px] rounded-full" style={{ background: "linear-gradient(to bottom, var(--gold), transparent)" }} />
+          <div
+            className="mt-1 h-2.5 w-2.5 animate-bounce rounded-full"
+            style={{ background: "var(--gold)", boxShadow: "0 0 10px rgba(201,168,76,0.5)" }}
+          />
         </div>
       </div>
     </section>
