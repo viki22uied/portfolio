@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useThemeMode } from "@/hooks/use-theme-mode";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -14,7 +13,6 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme, mounted } = useThemeMode();
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
@@ -63,8 +61,6 @@ export function Navbar() {
     },
     []
   );
-
-  if (!mounted) return null;
 
   return (
     <header
@@ -126,13 +122,6 @@ export function Navbar() {
           </a>
         </nav>
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggleTheme}
-            className="rounded-md border border-[var(--border-color)] px-3 py-2 text-xs tracking-wider text-[var(--text-primary)] hover:border-[var(--gold)]"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? "LIGHT" : "DARK"}
-          </button>
           <button
             onClick={() => setOpen((v) => !v)}
             className="relative flex h-9 w-9 flex-col items-center justify-center rounded-md border border-[var(--border-color)] text-[var(--text-primary)] md:hidden"

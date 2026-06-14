@@ -2,17 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, FileText } from "lucide-react";
+import { SectionLabel } from "@/components/section-label";
 
 export function Publications() {
   return (
     <section id="publications" className="section-reveal system-section">
       <div className="mx-auto max-w-6xl">
-        <p
-          className="mb-2 text-sm uppercase tracking-[0.25em]"
-          style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
-        >
-          Research
-        </p>
+        <SectionLabel index="07" eyebrow="The Research" formula="∮ peer-reviewed · IEEE" />
         <h2 className="text-4xl font-semibold md:text-5xl">Publications</h2>
 
         <motion.div

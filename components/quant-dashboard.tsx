@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import gsap from "gsap";
+import { SectionLabel } from "@/components/section-label";
 
 const metrics = [
   { label: "Sharpe Ratio", value: "2.47", positive: true },
@@ -106,19 +106,14 @@ export function QuantDashboard() {
   return (
     <section id="quant" className="section-reveal system-section" ref={sectionRef}>
       <div className="mx-auto max-w-6xl">
-        <p
-          className="mb-2 text-sm uppercase tracking-[0.25em]"
-          style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
-        >
-          Quant Research
-        </p>
+        <SectionLabel index="02" eyebrow="The Edge" formula="S_p = (E[R_p] − R_f) / σ_p" />
         <h2 className="text-4xl font-semibold md:text-5xl">Alpha Dashboard</h2>
         <p className="mt-3 max-w-xl text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
           Researching quantitative signals at the intersection of fundamental data, options flow, and network effects.
         </p>
 
         <div
-          className="mt-10 system-shell quant-scanline overflow-hidden"
+          className="terminal-corners mt-10 system-shell quant-scanline overflow-hidden"
           style={{ borderColor: "rgba(201,168,76,0.25)" }}
         >
           {/* Terminal header bar */}

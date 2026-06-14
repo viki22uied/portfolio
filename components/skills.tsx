@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SectionLabel } from "@/components/section-label";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,13 +72,9 @@ export function Skills() {
   return (
     <section id="skills" className="section-reveal system-section">
       <div ref={rootRef} className="mx-auto max-w-6xl">
+        <SectionLabel index="03" eyebrow="The Toolkit" formula="∇ · capabilities" />
         <div className="flex items-baseline gap-3">
-          <p
-            className="mb-2 text-sm uppercase tracking-[0.25em]"
-            style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
-          >
-            Capabilities
-          </p>
+          <h2 className="text-4xl font-semibold md:text-5xl">Skills</h2>
           <span
             className="rounded-full border px-2.5 py-0.5 text-xs"
             style={{ borderColor: "rgba(201,168,76,0.3)", color: "var(--gold)" }}
@@ -85,7 +82,6 @@ export function Skills() {
             {totalSkillCount} skills
           </span>
         </div>
-        <h2 className="text-4xl font-semibold md:text-5xl">Skills</h2>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {categories.map((category) => (
             <article

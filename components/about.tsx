@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import gsap from "gsap";
+import { SectionLabel } from "@/components/section-label";
 
 const lines = [
   "> Initializing profile...",
@@ -86,6 +87,9 @@ export function About() {
 
   return (
     <section id="about" className="section-reveal system-section section-grid-overlay section-scanline">
+      <div className="mx-auto mb-8 max-w-6xl">
+        <SectionLabel index="01" eyebrow="The Analyst" formula="α = R_p − [R_f + β(R_m − R_f)]" />
+      </div>
       <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.2fr_1fr]">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="system-shell terminal-panel p-6 md:p-8">
           <p

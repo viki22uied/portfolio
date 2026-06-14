@@ -16,6 +16,7 @@ import { Footer } from "@/components/footer";
 import { BackToTop } from "@/components/back-to-top";
 import { Publications } from "@/components/publications";
 import { QuantDashboard } from "@/components/quant-dashboard";
+import { QuantBackdrop } from "@/components/quant-backdrop";
 import { useGsapSectionReveal } from "@/hooks/use-gsap-section-reveal";
 
 export function PortfolioShell() {
@@ -26,7 +27,8 @@ export function PortfolioShell() {
   return (
     <div className="theme-transition">
       {!ready && <CinematicLoader onComplete={() => { window.scrollTo({ top: 0 }); setReady(true); }} />}
-      <main className="relative">
+      <QuantBackdrop />
+      <main className="relative z-10">
         <Navbar />
         <Hero />
         <CurvedSeparator />
