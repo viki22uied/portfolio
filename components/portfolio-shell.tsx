@@ -6,7 +6,6 @@ import { Hero } from "@/components/hero";
 import { Achievements } from "@/components/achievements";
 import { About } from "@/components/about";
 import { Skills } from "@/components/skills";
-
 import { Projects } from "@/components/projects";
 import { Contact } from "@/components/contact";
 import { CurvedSeparator } from "@/components/curved-separator";
@@ -15,6 +14,8 @@ import { PortfolioAssistant } from "@/components/portfolio-assistant";
 import { Timeline } from "@/components/timeline";
 import { Footer } from "@/components/footer";
 import { BackToTop } from "@/components/back-to-top";
+import { Publications } from "@/components/publications";
+import { QuantDashboard } from "@/components/quant-dashboard";
 import { useGsapSectionReveal } from "@/hooks/use-gsap-section-reveal";
 
 export function PortfolioShell() {
@@ -29,15 +30,19 @@ export function PortfolioShell() {
         <Navbar />
         <Hero />
         <CurvedSeparator />
-        <Achievements />
-        <CurvedSeparator />
         <About />
         <CurvedSeparator />
-        <Timeline />
+        <QuantDashboard />
         <CurvedSeparator />
         <Skills />
         <CurvedSeparator />
         <Projects />
+        <CurvedSeparator />
+        <Achievements />
+        <CurvedSeparator />
+        <Timeline />
+        <CurvedSeparator />
+        <Publications />
         <CurvedSeparator />
         <Contact />
         <Footer />

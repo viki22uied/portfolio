@@ -8,21 +8,25 @@
   --text-primary: #16181d;
   --text-secondary: #4a505b;
   --border-color: rgba(20, 22, 28, 0.16);
-  --gold: #d4af37;
-  --amber: #f59e0b;
-  --shadow-gold: rgba(212, 175, 55, 0.24);
+  --gold: #C9A84C;
+  --amber: #F5A623;
+  --shadow-gold: rgba(201, 168, 76, 0.28);
+  --green: #00C853;
+  --red: #FF3D3D;
 }
 
 html.dark {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1f2937;
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --border-color: rgba(249, 250, 251, 0.14);
-  --gold: #d4af37;
-  --amber: #f59e0b;
-  --shadow-gold: rgba(212, 175, 55, 0.28);
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-tertiary: #161616;
+  --text-primary: #F0F0F0;
+  --text-secondary: #888888;
+  --border-color: #222222;
+  --gold: #C9A84C;
+  --amber: #F5A623;
+  --shadow-gold: rgba(201, 168, 76, 0.32);
+  --green: #00C853;
+  --red: #FF3D3D;
 }
 
 * {
@@ -598,6 +602,45 @@ body {
 
 [id] {
   scroll-margin-top: 5rem;
+}
+
+/* Ticker tape */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 28s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Scanline overlay for quant sections */
+.quant-scanline {
+  position: relative;
+}
+.quant-scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(201, 168, 76, 0.025) 4px
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* PnL chart glow */
+.pnl-line {
+  filter: drop-shadow(0 0 4px rgba(201, 168, 76, 0.6));
 }
 
 /* Cursor blink for typewriter */

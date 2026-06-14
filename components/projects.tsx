@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import Image from "next/image";
-import { X, Github, ExternalLink, Play, ChevronLeft, ChevronRight, Zap, ShieldCheck, Wallet } from "lucide-react";
+import { X, Github, ExternalLink, Play, ChevronLeft, ChevronRight, Zap, ShieldCheck, Wallet, BookOpen } from "lucide-react";
 import InteractiveSelector from "@/components/ui/interactive-selector";
 
 interface Project {
@@ -26,27 +26,28 @@ interface Project {
 const projects: Project[] = [
   {
     id: "deep-work-ai",
-    title: "Deep Work AI Plugin",
-    subtitle: "Productivity plugin for the Logitech MX Creative Console",
-    longDescription: "Developed a Deep Work AI plugin for the Logitech MX Creative Console that enhances focus and productivity through intelligent workflow automation. The plugin integrates with Logitech Options+ to provide features like Meeting Mode, Context Anchoring, Queue Interruption management, and workspace restoration. Built with a Python-based service layer, a timeline UI overlay, and hardware-mapped controls for seamless deep work sessions.",
+    title: "Deep Work AI Console",
+    subtitle: "Top 50 Globally — Logitech DevStudio 2026",
+    longDescription: "AI-powered deep work plugin for the Logitech MX Creative Console. Integrates with Logitech Options+ via the SDK to provide Meeting Mode, Context Anchoring, Queue Interruption management, and workspace restoration. Built with a Python service layer, PyQt6 timeline UI overlay, scikit-learn focus scoring, and Node.js IPC bridge for hardware-mapped controls.",
     tags: ["AI", "Plugin", "Productivity"],
-    techStack: ["Python", "TypeScript", "Logitech SDK", "Windows API"],
+    techStack: ["Python", "Node.js", "scikit-learn", "PyQt6", "Logitech SDK"],
     thumbnail: "/projects/deep-work-ai.png",
     images: ["/projects/deep-work-ai.png"],
     github: "https://github.com/viki22uied/Deepworkai",
     liveUrl: "https://www.youtube.com/watch?v=XWE-0LSkKNs&t=2s",
     videoUrl: "https://www.youtube.com/embed/Dk-PucXtzNE",
-    year: "2025",
+    year: "2026",
     status: "Live",
     icon: <Zap size={22} className="text-white" />,
+    featured: true,
   },
   {
     id: "fraud-detection",
     title: "Financial Crime Detection Pipeline",
-    subtitle: "Graph analytics & ML on 1M+ transactions",
-    longDescription: "Developed a fraud detection pipeline to identify suspicious transaction patterns using machine learning and graph analytics on large-scale financial data. Processed and analyzed a dataset of over 1 million transactions, built a risk scoring system to flag high-risk entities, and applied graph analytics to uncover hidden relationships in transaction networks. Used NetworkX to compute Strongly Connected Components (SCC) and Betweenness Centrality to identify suspicious clusters.",
+    subtitle: "Graph analytics on 1M+ transactions",
+    longDescription: "End-to-end fraud detection pipeline processing 1M+ financial transactions. Used NetworkX graph analytics — Strongly Connected Components and Betweenness Centrality — to surface hidden money-laundering rings. Built risk scoring with scikit-learn ensemble models, visualized via Tableau dashboards, containerised with Docker for production deployment.",
     tags: ["Finance", "ML", "Data"],
-    techStack: ["Python", "NetworkX", "scikit-learn", "Tableau", "Pandas", "SQL"],
+    techStack: ["Python", "NetworkX", "Tableau", "Docker", "Pandas", "SQL"],
     thumbnail: "/projects/fraud-detection.png",
     images: ["/projects/fraud-detection.png"],
     github: "https://github.com/viki22uied/Tableau",
@@ -58,10 +59,10 @@ const projects: Project[] = [
   {
     id: "hercules-finance",
     title: "Hercules Finance AI",
-    subtitle: "Financial planning for gig workers — Mumbai Hacks Top 100",
-    longDescription: "Built a financial planning platform designed for gig workers to manage irregular income, forecast earnings, and simulate financial risks. Designed an income forecasting system tailored for non-linear income streams with crisis planning and financial risk simulation features. Created a multilingual interface with real-world usability in mind. Placed in the top 100 teams out of 3,500+ participants at Mumbai Hacks hackathon.",
+    subtitle: "Top 30 National — SEBI Global FinTech Festival 2025",
+    longDescription: "Financial planning platform for gig workers — Top 30 National at SEBI Global FinTech Festival 2025. Built income forecasting tailored to non-linear income streams, crisis simulation, and financial risk modelling. Gemini AI powers personalized recommendations. Multilingual interface. Also placed Top 100 out of 3,500+ teams at Mumbai Hacks 2025.",
     tags: ["Finance", "AI", "FinTech"],
-    techStack: ["Next.js", "TypeScript", "Python", "FastAPI", "PostgreSQL"],
+    techStack: ["Next.js", "Gemini AI", "TypeScript", "FastAPI", "PostgreSQL"],
     thumbnail: "/projects/hercules-finance.png",
     images: ["/projects/hercules-finance.png"],
     github: "https://github.com/viki22uied/Hercules-tasvi",
@@ -69,7 +70,21 @@ const projects: Project[] = [
     year: "2025",
     status: "Live",
     icon: <Wallet size={22} className="text-white" />,
-    featured: true,
+  },
+  {
+    id: "ai-learning-aid",
+    title: "AI-Powered Learning Aid",
+    subtitle: "Semantic search across 1000+ educational resources",
+    longDescription: "Intelligent learning platform using FAISS + Qdrant vector search to surface semantically relevant educational resources across 1000+ curated materials. FastAPI backend with async endpoints. Docker-compose deployment. Supports multi-modal search, citation clustering, and adaptive study path generation using embedding-based similarity.",
+    tags: ["AI", "ML", "Data"],
+    techStack: ["FastAPI", "FAISS", "Qdrant", "Docker", "Python", "Embeddings"],
+    thumbnail: "/projects/ai-learning-aid.png",
+    images: ["/projects/ai-learning-aid.png"],
+    github: "https://github.com/viki22uied",
+    videoUrl: "",
+    year: "2025",
+    status: "Live",
+    icon: <BookOpen size={22} className="text-white" />,
   },
 ];
 

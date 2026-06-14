@@ -5,11 +5,10 @@ import { useThemeMode } from "@/hooks/use-theme-mode";
 
 const links = [
   { label: "Home", href: "#home" },
-  { label: "Achievements", href: "#achievements" },
   { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-
+  { label: "Quant", href: "#quant" },
   { label: "Projects", href: "#projects" },
+  { label: "Achievements", href: "#achievements" },
   { label: "Contact", href: "#contact" },
 ];
 
