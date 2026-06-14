@@ -165,7 +165,7 @@ function ProjectModal({ project, onClose, onNext, onPrev }: { project: Project; 
               </div>
             ) : (
               <div className="project-modal-video">
-                <iframe src={project.videoUrl} title={`${project.title} demo`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="aspect-video w-full rounded-lg border border-[var(--border-color)]" />
+                <iframe src={project.videoUrl} title={`${project.title} demo`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="aspect-video w-full rounded-lg border border-[var(--border-color)]" />
               </div>
             )}
           </div>

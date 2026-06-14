@@ -38,7 +38,7 @@ export function Contact() {
               key={label}
               href={href}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="gold-glow-hover rounded-full border p-4 transition-all duration-200 hover:text-[var(--gold)]"
               style={{ borderColor: "var(--border-color)", color: "var(--text-secondary)" }}
               aria-label={label}
