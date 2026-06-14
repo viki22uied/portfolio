@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import { FileText, Medal, Award, Brain, Users, Globe, Cpu, TrendingUp } from "lucide-react";
 import InteractiveSelector from "@/components/ui/interactive-selector";
+import { SectionLabel } from "@/components/section-label";
 
 interface Achievement {
   title: string;
@@ -20,7 +21,7 @@ const achievements: Achievement[] = [
     issuer: "WorldQuant · Research Consultant Program",
     year: "2024–2025",
     detail: "Achieved Gold Level on WorldQuant BRAIN platform with 53+ alpha submissions. Selected for the Research Consultant Program. IQC 2026 — Top 20% globally across 80,000+ participants from 142 countries.",
-    image: "/achievements/worldquant.png",
+    image: "/achievements/ieee-publication.png",
     icon: <TrendingUp size={22} className="text-white" />,
   },
   {
@@ -28,7 +29,7 @@ const achievements: Achievement[] = [
     issuer: "WorldQuant International Quant Championship",
     year: "2026",
     detail: "Ranked in the Top 20% globally at the International Quant Championship 2026 — 80,000+ participants across 142 countries. Competed in quantitative signal research, alpha development, and portfolio construction.",
-    image: "/achievements/iqc-2026.png",
+    image: "/achievements/tata-crucible.png",
     icon: <Globe size={22} className="text-white" />,
   },
   {
@@ -36,7 +37,7 @@ const achievements: Achievement[] = [
     issuer: "Securities and Exchange Board of India",
     year: "2025",
     detail: "Placed in the Top 30 nationally at the SEBI Global FinTech Festival 2025 with Hercules Finance AI — a financial planning platform for gig workers. Competed against hundreds of teams from across India.",
-    image: "/achievements/sebi-2025.png",
+    image: "/achievements/sebi-fintech.png",
     icon: <Award size={22} className="text-white" />,
   },
   {
@@ -44,7 +45,7 @@ const achievements: Achievement[] = [
     issuer: "Logitech DevStudio 2026",
     year: "2026",
     detail: "Ranked in the Top 50 globally at the Logitech DevStudio Hackathon 2026 with Deep Work AI Console — an AI-powered productivity plugin for the Logitech MX Creative Console.",
-    image: "/achievements/logitech-2026.png",
+    image: "/projects/deep-work-ai.png",
     icon: <Cpu size={22} className="text-white" />,
   },
   {
@@ -125,6 +126,7 @@ export function Achievements() {
           className="mx-auto max-w-6xl"
           style={{ opacity: headerVisible ? 1 : 0, transform: headerVisible ? "translateY(0)" : "translateY(30px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}
         >
+          <SectionLabel index="05" eyebrow="The Track Record" formula="Σ wins → percentile → top 1%" />
           <InteractiveSelector
             options={selectorOptions}
             heading="Achievements"

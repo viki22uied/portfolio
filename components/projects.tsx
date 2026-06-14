@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { X, Github, ExternalLink, Play, ChevronLeft, ChevronRight, Zap, ShieldCheck, Wallet, BookOpen } from "lucide-react";
 import InteractiveSelector from "@/components/ui/interactive-selector";
+import { SectionLabel } from "@/components/section-label";
 
 interface Project {
   id: string;
@@ -78,8 +79,8 @@ const projects: Project[] = [
     longDescription: "Intelligent learning platform using FAISS + Qdrant vector search to surface semantically relevant educational resources across 1000+ curated materials. FastAPI backend with async endpoints. Docker-compose deployment. Supports multi-modal search, citation clustering, and adaptive study path generation using embedding-based similarity.",
     tags: ["AI", "ML", "Data"],
     techStack: ["FastAPI", "FAISS", "Qdrant", "Docker", "Python", "Embeddings"],
-    thumbnail: "/projects/ai-learning-aid.png",
-    images: ["/projects/ai-learning-aid.png"],
+    thumbnail: "/projects/learning-aid.png",
+    images: ["/projects/learning-aid.png"],
     github: "https://github.com/viki22uied",
     videoUrl: "",
     year: "2025",
@@ -237,6 +238,7 @@ export function Projects() {
     <>
       <section id="projects" className="system-section">
         <div ref={headerRef} className="mx-auto max-w-6xl" style={{ opacity: headerVisible ? 1 : 0, transform: headerVisible ? "translateY(0)" : "translateY(30px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
+          <SectionLabel index="04" eyebrow="The Builds" formula="∫ ship · iterate dt" />
           <InteractiveSelector options={selectorOptions} heading="Projects" subheading="Click any panel to preview — click the expanded panel for full details." onActiveClick={(index) => setActiveIndex(index)} />
         </div>
       </section>

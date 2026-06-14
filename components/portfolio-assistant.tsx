@@ -39,6 +39,7 @@ export function PortfolioAssistant() {
   const chatRef = useRef<HTMLDivElement>(null);
   const typingRef = useRef<number | null>(null);
   const callTimesRef = useRef<number[]>([]);
+  const pendingTypeRef = useRef<{ text: string; idx: number } | null>(null);
 
   /* Auto-scroll to latest message */
   useEffect(() => {
@@ -67,6 +68,15 @@ export function PortfolioAssistant() {
     typingRef.current = id;
   }, []);
 
+  /* Kick off typewriter after messages state commits — avoids setTimeout inside setState */
+  useEffect(() => {
+    const pending = pendingTypeRef.current;
+    if (!pending) return;
+    pendingTypeRef.current = null;
+    const t = window.setTimeout(() => typeText(pending.text, pending.idx), 80);
+    return () => window.clearTimeout(t);
+  }, [messages.length, typeText]);
+
   const respond = useCallback((raw: string) => {
     /* Sanitize + bound the input before doing anything with it */
     const trimmed = raw.slice(0, MAX_INPUT_LEN).trim();
@@ -89,10 +99,8 @@ export function PortfolioAssistant() {
     if (projectKey) {
       const answer = projectKnowledge[projectKey];
       setMessages((prev) => {
-        const newMsgs = [...prev, { role: "user" as const, text: trimmed }, { role: "bot" as const, text: "" }];
-        const idx = newMsgs.length - 1;
-        setTimeout(() => typeText(answer, idx), 80);
-        return newMsgs;
+        pendingTypeRef.current = { text: answer, idx: prev.length + 1 };
+        return [...prev, { role: "user" as const, text: trimmed }, { role: "bot" as const, text: "" }];
       });
       setInput("");
       return;
@@ -104,10 +112,8 @@ export function PortfolioAssistant() {
     const picked = key ? responses[key] : { text: fallback };
 
     setMessages((prev) => {
-      const newMsgs = [...prev, { role: "user" as const, text: trimmed }, { role: "bot" as const, text: "" }];
-      const idx = newMsgs.length - 1;
-      setTimeout(() => typeText(picked.text, idx), 80);
-      return newMsgs;
+      pendingTypeRef.current = { text: picked.text, idx: prev.length + 1 };
+      return [...prev, { role: "user" as const, text: trimmed }, { role: "bot" as const, text: "" }];
     });
     setInput("");
 

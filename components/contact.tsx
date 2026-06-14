@@ -14,10 +14,13 @@ export function Contact() {
     <section id="contact" className="section-reveal system-section pb-36">
       <div className="mx-auto max-w-4xl text-center">
         <p
-          className="mb-2 text-sm uppercase tracking-[0.25em]"
-          style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+          className="mb-2 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.32em]"
+          style={{ color: "var(--text-secondary)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
         >
-          Contact
+          <span style={{ color: "var(--gold)" }}>08</span>
+          <span className="h-px w-8" style={{ background: "linear-gradient(90deg, transparent, var(--gold), transparent)" }} />
+          The Desk
+          <span className="h-px w-8" style={{ background: "linear-gradient(90deg, transparent, var(--gold), transparent)" }} />
         </p>
         <h2 className="text-4xl font-semibold md:text-5xl">Let&apos;s Build Alpha Together</h2>
         <p

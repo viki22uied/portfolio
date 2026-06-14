@@ -47,10 +47,13 @@ export function Timeline() {
     <section id="timeline" className="section-reveal system-section">
       <div ref={rootRef} className="mx-auto max-w-4xl">
         <p
-          className="mb-2 text-center text-sm uppercase tracking-[0.25em]"
-          style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+          className="mb-2 flex items-center justify-center gap-3 text-center text-xs uppercase tracking-[0.32em]"
+          style={{ color: "var(--text-secondary)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
         >
-          Journey
+          <span style={{ color: "var(--gold)" }}>06</span>
+          <span className="h-px w-8" style={{ background: "linear-gradient(90deg, transparent, var(--gold), transparent)" }} />
+          The Ascent
+          <span className="h-px w-8" style={{ background: "linear-gradient(90deg, transparent, var(--gold), transparent)" }} />
         </p>
         <h2 className="text-center text-4xl font-semibold md:text-5xl">Timeline</h2>
         <div className="relative mt-12">
