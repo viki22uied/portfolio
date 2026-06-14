@@ -26,19 +26,31 @@ const responses: Record<string, { text: string; scrollTo?: string; action?: stri
   research: { text: "Published 'AI-Enhanced PGRKAM Employment Analytics Platform' at IEEE ISAECT 2025.", scrollTo: "achievements" },
 };
 
+/* Client-side abuse guard: cap how fast respond() can fire so the typewriter
+   intervals can't be spammed into a UI freeze. */
+const RATE_WINDOW_MS = 5_000;
+const RATE_MAX = 8;
+const MAX_INPUT_LEN = 200;
+
 export function PortfolioAssistant() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([{ role: "bot", text: "Portfolio Assistant ready. Enter a command." }]);
   const [input, setInput] = useState("");
   const chatRef = useRef<HTMLDivElement>(null);
+  const typingRef = useRef<number | null>(null);
+  const callTimesRef = useRef<number[]>([]);
 
   /* Auto-scroll to latest message */
   useEffect(() => {
     if (chatRef.current) chatRef.current.scrollTop = chatRef.current.scrollHeight;
   }, [messages]);
 
+  /* Clean up any in-flight typewriter interval on unmount */
+  useEffect(() => () => { if (typingRef.current !== null) window.clearInterval(typingRef.current); }, []);
 
   const typeText = useCallback((text: string, messageIndex: number) => {
+    /* Cancel a previous in-flight animation so intervals never stack up */
+    if (typingRef.current !== null) window.clearInterval(typingRef.current);
     let i = 0;
     const id = window.setInterval(() => {
       i += 1;
@@ -47,19 +59,37 @@ export function PortfolioAssistant() {
         next[messageIndex] = { role: "bot", text: text.slice(0, i) };
         return next;
       });
-      if (i >= text.length) window.clearInterval(id);
+      if (i >= text.length) {
+        window.clearInterval(id);
+        if (typingRef.current === id) typingRef.current = null;
+      }
     }, 14);
+    typingRef.current = id;
   }, []);
 
   const respond = useCallback((raw: string) => {
-    const text = raw.toLowerCase();
+    /* Sanitize + bound the input before doing anything with it */
+    const trimmed = raw.slice(0, MAX_INPUT_LEN).trim();
+    if (!trimmed) return;
+
+    /* Sliding-window rate limit */
+    const now = Date.now();
+    callTimesRef.current = callTimesRef.current.filter((t) => now - t < RATE_WINDOW_MS);
+    if (callTimesRef.current.length >= RATE_MAX) {
+      setMessages((prev) => [...prev, { role: "bot", text: "Easy there — too many commands at once. Give me a second." }]);
+      setInput("");
+      return;
+    }
+    callTimesRef.current.push(now);
+
+    const text = trimmed.toLowerCase();
 
     /* Check project knowledge base first */
     const projectKey = Object.keys(projectKnowledge).find((k) => text.includes(k));
     if (projectKey) {
       const answer = projectKnowledge[projectKey];
       setMessages((prev) => {
-        const newMsgs = [...prev, { role: "user" as const, text: raw }, { role: "bot" as const, text: "" }];
+        const newMsgs = [...prev, { role: "user" as const, text: trimmed }, { role: "bot" as const, text: "" }];
         const idx = newMsgs.length - 1;
         setTimeout(() => typeText(answer, idx), 80);
         return newMsgs;
@@ -74,7 +104,7 @@ export function PortfolioAssistant() {
     const picked = key ? responses[key] : { text: fallback };
 
     setMessages((prev) => {
-      const newMsgs = [...prev, { role: "user" as const, text: raw }, { role: "bot" as const, text: "" }];
+      const newMsgs = [...prev, { role: "user" as const, text: trimmed }, { role: "bot" as const, text: "" }];
       const idx = newMsgs.length - 1;
       setTimeout(() => typeText(picked.text, idx), 80);
       return newMsgs;
@@ -145,6 +175,7 @@ export function PortfolioAssistant() {
           <div className="flex gap-2">
             <input
               value={input}
+              maxLength={MAX_INPUT_LEN}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === "Enter") respond(input || "help"); }}
               className="w-full rounded border border-[var(--border-color)] bg-transparent px-2 py-1.5 text-xs text-[var(--text-primary)] outline-none"
