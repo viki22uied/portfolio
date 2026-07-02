@@ -73,7 +73,7 @@ export function Navbar() {
           ? "1px solid var(--border-color)"
           : "1px solid transparent",
         boxShadow: scrolled
-          ? "0 1px 8px rgba(212,175,55,0.06)"
+          ? "0 1px 8px rgba(56, 189, 248,0.06)"
           : "none",
       }}
     >
@@ -97,7 +97,7 @@ export function Navbar() {
                 style={{
                   color: isActive ? "var(--gold)" : "var(--text-secondary)",
                   fontWeight: isActive ? 600 : 400,
-                  textShadow: isActive ? "0 0 12px rgba(212,175,55,0.4)" : "none",
+                  textShadow: isActive ? "0 0 12px rgba(56, 189, 248,0.4)" : "none",
                 }}
               >
                 {link.label}
@@ -106,7 +106,7 @@ export function Navbar() {
                   style={{
                     background: "var(--gold)",
                     transform: isActive ? "scaleX(1)" : "scaleX(0)",
-                    boxShadow: isActive ? "0 0 8px rgba(212,175,55,0.5)" : "none",
+                    boxShadow: isActive ? "0 0 8px rgba(56, 189, 248,0.5)" : "none",
                   }}
                 />
               </a>
@@ -116,7 +116,7 @@ export function Navbar() {
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); handleNavClick("#contact"); }}
-            className="rounded-md bg-[var(--gold)] px-4 py-2 text-xs font-semibold tracking-wider text-[#0a0a0f] shadow-[0_4px_12px_-4px_var(--shadow-gold)] transition-all duration-200 hover:shadow-[0_8px_20px_-6px_var(--shadow-gold)] hover:brightness-110"
+            className="rounded-md bg-[var(--gold)] px-4 py-2 text-xs font-semibold tracking-wider text-[#03140b] shadow-[0_4px_12px_-4px_var(--shadow-gold)] transition-all duration-200 hover:shadow-[0_8px_20px_-6px_var(--shadow-gold)] hover:brightness-110"
           >
             HIRE ME
           </a>
@@ -155,7 +155,7 @@ export function Navbar() {
           {/* Hire Me first on mobile */}
           <button
             onClick={() => handleNavClick("#contact")}
-            className="mb-3 w-full rounded-md bg-[var(--gold)] py-2.5 text-sm font-semibold text-[#0a0a0f]"
+            className="mb-3 w-full rounded-md bg-[var(--gold)] py-2.5 text-sm font-semibold text-[#03140b]"
           >
             HIRE ME
           </button>

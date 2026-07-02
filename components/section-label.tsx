@@ -32,7 +32,7 @@ export function SectionLabel({
       {formula && (
         <span
           className="ml-auto hidden truncate text-[11px] md:block"
-          style={{ color: "rgba(201,168,76,0.45)" }}
+          style={{ color: "rgba(0, 220, 130,0.45)" }}
         >
           {formula}
         </span>

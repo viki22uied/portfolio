@@ -18,7 +18,7 @@ export function BackToTop() {
   return (
     <button
       onClick={() => document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })}
-      className="fixed bottom-5 left-5 z-[80] flex h-10 w-10 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--bg-secondary)] text-[var(--gold)] shadow-[0_0_12px_rgba(212,175,55,0.2)] transition-all duration-300"
+      className="fixed bottom-5 left-5 z-[80] flex h-10 w-10 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--bg-secondary)] text-[var(--gold)] shadow-[0_0_12px_rgba(56, 189, 248,0.2)] transition-all duration-300"
       style={{
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? "auto" : "none",

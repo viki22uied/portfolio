@@ -5,10 +5,10 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 /* ── Palette ─────────────────────────────────────────── */
-const GOLD = "#C9A84C";
-const AMBER = "#F5A623";
-const GREEN = "#00C853";
-const RED = "#FF3D3D";
+const GOLD = "#00DC82";
+const AMBER = "#38BDF8";
+const GREEN = "#00DC82";
+const RED = "#FF4D5E";
 
 /* ── Math helpers ────────────────────────────────────── */
 function gauss() {
@@ -76,7 +76,7 @@ const PriceTape = memo(function PriceTape({ pointer, reduced }: { pointer: Point
     const aPos = new Float32Array(N * 2 * 3);
     const aCol = new Float32Array(N * 2 * 3);
     const gTop = new THREE.Color(GOLD);
-    const gBot = new THREE.Color("#0A0A0A");
+    const gBot = new THREE.Color("#030712");
     for (let i = 0; i < N; i++) {
       const x = xAt(i);
       const t = i * 6;

@@ -122,7 +122,7 @@ const InteractiveSelector: React.FC<InteractiveSelectorProps> = ({
                   minWidth: 60,
                   overflow: "hidden",
                   cursor: "pointer",
-                  border: `2px solid ${isActive ? "var(--gold, #d4af37)" : "var(--border-color, #292929)"}`,
+                  border: `2px solid ${isActive ? "var(--gold, #00DC82)" : "var(--border-color, #292929)"}`,
                   opacity: isReady ? 1 : 0,
                   transform: isReady ? "translateX(0) scale(1)" : "translateX(-40px) scale(0.97)",
                   transition: `flex 0.8s ${EASE}, opacity 0.6s ${EASE}, transform 0.6s ${EASE}, border-color 0.5s ease`,
@@ -132,7 +132,7 @@ const InteractiveSelector: React.FC<InteractiveSelectorProps> = ({
               >
 
                 {option.featured && (
-                  <div style={{ position: "absolute", top: 12, right: 12, zIndex: 10, background: "var(--gold)", color: "#0a0a0f", padding: "4px 10px", borderRadius: 6, fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>FEATURED</div>
+                  <div style={{ position: "absolute", top: 12, right: 12, zIndex: 10, background: "var(--gold)", color: "#03140b", padding: "4px 10px", borderRadius: 6, fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" as const }}>FEATURED</div>
                 )}
                 {/* BG image — separate div for GPU-composited scale */}
                 <div
@@ -191,7 +191,7 @@ const InteractiveSelector: React.FC<InteractiveSelectorProps> = ({
                       borderRadius: "50%",
                       background: "rgba(20,20,25,0.8)",
                       backdropFilter: "blur(10px)",
-                      border: `2px solid ${isActive ? "rgba(212,175,55,0.5)" : "rgba(255,255,255,0.15)"}`,
+                      border: `2px solid ${isActive ? "rgba(56, 189, 248,0.5)" : "rgba(255,255,255,0.15)"}`,
                       boxShadow: "0 2px 8px rgba(0,0,0,0.25)",
                       transition: `border-color 0.4s ease, background 0.4s ease`,
                     }}

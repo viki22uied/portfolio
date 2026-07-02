@@ -54,7 +54,7 @@ function PnLChart() {
         <g key={v}>
           <line
             x1={pad.l} y1={toY(v)} x2={W - pad.r} y2={toY(v)}
-            stroke="rgba(201,168,76,0.12)" strokeWidth="1" strokeDasharray="4 4"
+            stroke="rgba(0, 220, 130,0.12)" strokeWidth="1" strokeDasharray="4 4"
           />
           <text
             x={pad.l - 6} y={toY(v) + 4}
@@ -73,12 +73,12 @@ function PnLChart() {
       <circle
         cx={toX(maxX)} cy={toY(data[data.length - 1].y)}
         r="4" fill="var(--gold)"
-        style={{ filter: "drop-shadow(0 0 6px rgba(201,168,76,0.8))" }}
+        style={{ filter: "drop-shadow(0 0 6px rgba(0, 220, 130,0.8))" }}
       />
       <defs>
         <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#C9A84C" />
-          <stop offset="100%" stopColor="#C9A84C" stopOpacity="0" />
+          <stop offset="0%" stopColor="#00DC82" />
+          <stop offset="100%" stopColor="#00DC82" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
@@ -114,7 +114,7 @@ export function QuantDashboard() {
 
         <div
           className="terminal-corners mt-10 system-shell quant-scanline overflow-hidden"
-          style={{ borderColor: "rgba(201,168,76,0.25)" }}
+          style={{ borderColor: "rgba(0, 220, 130,0.25)" }}
         >
           {/* Terminal header bar */}
           <div

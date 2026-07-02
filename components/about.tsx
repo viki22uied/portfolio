@@ -116,7 +116,7 @@ export function About() {
             className="mt-6 inline-flex items-center gap-2 rounded-md border px-5 py-2.5 text-sm font-medium transition-all duration-200"
             style={{
               borderColor: "var(--gold)",
-              background: "rgba(201,168,76,0.08)",
+              background: "rgba(0, 220, 130,0.08)",
               color: "var(--gold)",
             }}
           >

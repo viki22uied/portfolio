@@ -150,7 +150,7 @@ export function PortfolioAssistant() {
       )}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--bg-secondary)] text-[var(--gold)] shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-200 hover:scale-110 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]"
+        className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[var(--gold)] bg-[var(--bg-secondary)] text-[var(--gold)] shadow-[0_0_20px_rgba(56, 189, 248,0.3)] transition-all duration-200 hover:scale-110 hover:shadow-[0_0_30px_rgba(56, 189, 248,0.5)]"
         aria-label="Toggle Portfolio Assistant"
       >
         {/* Pulsing ring */}

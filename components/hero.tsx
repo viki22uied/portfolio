@@ -8,15 +8,14 @@ const HeroScene = dynamic(() => import("@/components/scenes/hero-scene").then((m
 const roles = ["Quant Researcher", "AI Engineer", "FinTech Builder", "Alpha Researcher"];
 
 const tickerItems = [
-  "WorldQuant GOLD",
-  "IQC 2026 — Top 20% Globally",
-  "80,000+ Participants Beaten",
-  "142 Countries Competed",
-  "SEBI Top 30 National",
-  "IEEE Published",
-  "Logitech Top 50 Global",
-  "IIT Madras 1st Runner-Up",
-  "Mumbai Hacks Top 100",
+  { sym: "WQ.GOLD", move: "▲ 53 ALPHAS" },
+  { sym: "IQC.26 TOP 20% GLOBAL", move: "▲ 80,000+ FIELD" },
+  { sym: "142 COUNTRIES", move: "▲ GLOBAL" },
+  { sym: "SEBI TOP 30 NATIONAL", move: "▲ FINTECH" },
+  { sym: "IEEE PUBLISHED", move: "▲ PEER-REVIEWED" },
+  { sym: "LOGITECH TOP 50", move: "▲ GLOBAL" },
+  { sym: "IIT MADRAS RUNNER-UP", move: "▲ DESIGN" },
+  { sym: "MUMBAI HACKS TOP 100", move: "▲ 3,500 TEAMS" },
 ];
 
 export function Hero() {
@@ -66,8 +65,15 @@ export function Hero() {
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center gap-10">
         <div className="max-w-3xl">
           <p
+            className="mb-4 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.25em]"
+            style={{ color: "var(--green)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+          >
+            <span className="inline-block h-2 w-2 animate-pulse rounded-full" style={{ background: "var(--green)", boxShadow: "0 0 8px rgba(0,220,130,0.8)" }} />
+            Market Open · Accepting Opportunities
+          </p>
+          <p
             className="mb-5 font-mono text-sm uppercase tracking-[0.3em]"
-            style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
+            style={{ color: "var(--amber)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
           >
             Quant Researcher · AI Engineer · FinTech Builder
           </p>
@@ -99,7 +105,7 @@ export function Hero() {
           <a
             href="#projects"
             onClick={(e) => { e.preventDefault(); document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }); }}
-            className="rounded-md border px-6 py-3 text-sm font-medium text-[#0a0a0a] shadow-[0_12px_24px_-16px_var(--shadow-gold)] transition-all duration-200 hover:shadow-[0_16px_32px_-12px_var(--shadow-gold)]"
+            className="rounded-md border px-6 py-3 text-sm font-medium text-[#030712] shadow-[0_12px_24px_-16px_var(--shadow-gold)] transition-all duration-200 hover:shadow-[0_16px_32px_-12px_var(--shadow-gold)]"
             style={{ borderColor: "var(--gold)", background: "var(--gold)" }}
           >
             View Projects
@@ -134,13 +140,14 @@ export function Hero() {
               key={i}
               className="mr-10 text-xs uppercase"
               style={{
-                color: "var(--gold)",
+                color: "var(--text-primary)",
                 fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
-                letterSpacing: "0.18em",
+                letterSpacing: "0.14em",
               }}
             >
-              {item}
-              <span className="mx-5" style={{ color: "var(--amber)" }}>◆</span>
+              {item.sym}
+              <span className="ml-3" style={{ color: "var(--green)" }}>{item.move}</span>
+              <span className="mx-5" style={{ color: "var(--border-color)" }}>│</span>
             </span>
           ))}
         </div>
@@ -162,7 +169,7 @@ export function Hero() {
           <div className="h-10 w-[2px] rounded-full" style={{ background: "linear-gradient(to bottom, var(--gold), transparent)" }} />
           <div
             className="mt-1 h-2.5 w-2.5 animate-bounce rounded-full"
-            style={{ background: "var(--gold)", boxShadow: "0 0 10px rgba(201,168,76,0.5)" }}
+            style={{ background: "var(--gold)", boxShadow: "0 0 10px rgba(0, 220, 130,0.5)" }}
           />
         </div>
       </div>

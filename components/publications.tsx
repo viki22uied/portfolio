@@ -19,13 +19,13 @@ export function Publications() {
         >
           <article
             className="system-shell quant-scanline relative overflow-hidden p-6 md:p-8"
-            style={{ borderColor: "rgba(201,168,76,0.3)" }}
+            style={{ borderColor: "rgba(0, 220, 130,0.3)" }}
           >
             {/* Scanline shimmer */}
             <div
               className="pointer-events-none absolute inset-0 rounded-[inherit]"
               style={{
-                background: "repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(201,168,76,0.018) 4px)",
+                background: "repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(0, 220, 130,0.018) 4px)",
               }}
             />
 
@@ -37,7 +37,7 @@ export function Publications() {
                   style={{
                     borderColor: "var(--gold)",
                     color: "var(--gold)",
-                    background: "rgba(201,168,76,0.1)",
+                    background: "rgba(0, 220, 130,0.1)",
                     fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
                   }}
                 >
@@ -77,7 +77,7 @@ export function Publications() {
                   <span
                     className="rounded-full border px-2.5 py-0.5 text-xs"
                     style={{
-                      borderColor: "rgba(0,200,83,0.4)",
+                      borderColor: "rgba(0, 220, 130,0.4)",
                       color: "var(--green)",
                       fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
                     }}

@@ -114,15 +114,15 @@ export function CinematicLoader({ onComplete }: Props) {
         className="pointer-events-none absolute inset-0 opacity-[0.5]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px)",
+            "linear-gradient(rgba(0, 220, 130,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 220, 130,0.04) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
 
       <div
         ref={panelRef}
-        className="relative w-full max-w-xl overflow-hidden rounded-lg border bg-[#0A0A0A] shadow-[0_0_60px_-15px_rgba(201,168,76,0.4)]"
-        style={{ borderColor: "rgba(201,168,76,0.35)" }}
+        className="relative w-full max-w-xl overflow-hidden rounded-lg border bg-[#030712] shadow-[0_0_60px_-15px_rgba(0, 220, 130,0.4)]"
+        style={{ borderColor: "rgba(0, 220, 130,0.35)" }}
       >
         {/* Title bar */}
         <div
@@ -176,7 +176,7 @@ export function CinematicLoader({ onComplete }: Props) {
             <span style={{ color: "var(--gold)" }}>&gt;</span>
             <span
               className="ml-2 font-medium tracking-wide"
-              style={{ color: "var(--text-primary)", textShadow: "0 0 22px rgba(201,168,76,0.25)" }}
+              style={{ color: "var(--text-primary)", textShadow: "0 0 22px rgba(0, 220, 130,0.25)" }}
             >
               Welcome to my journey
             </span>

@@ -74,32 +74,37 @@ export function Skills() {
       <div ref={rootRef} className="mx-auto max-w-6xl">
         <SectionLabel index="03" eyebrow="The Toolkit" formula="∇ · capabilities" />
         <div className="flex items-baseline gap-3">
-          <h2 className="text-4xl font-semibold md:text-5xl">Skills</h2>
+          <h2 className="text-4xl font-semibold md:text-5xl">Asset Allocation</h2>
           <span
             className="rounded-full border px-2.5 py-0.5 text-xs"
-            style={{ borderColor: "rgba(201,168,76,0.3)", color: "var(--gold)" }}
+            style={{ borderColor: "rgba(0,220,130,0.3)", color: "var(--gold)", fontFamily: "'JetBrains Mono', monospace" }}
           >
-            {totalSkillCount} skills
+            {totalSkillCount} instruments
           </span>
         </div>
+        <p className="mt-3 max-w-xl text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+          The capital stack — four books of instruments, weighted by conviction.
+        </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {categories.map((category) => (
+          {categories.map((category, ci) => (
             <article
               key={category.title}
               className="skill-card gold-glow-hover system-shell p-6"
             >
               <h3
-                className="text-sm font-semibold uppercase tracking-[0.18em]"
+                className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em]"
                 style={{ color: "var(--gold)", fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
               >
+                <span style={{ color: "var(--amber)" }}>BOOK 0{ci + 1}</span>
+                <span className="h-px w-4" style={{ background: "var(--border-color)" }} />
                 {category.title}
               </h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border px-3 py-1.5 text-xs transition-all duration-200 hover:bg-[rgba(201,168,76,0.12)]"
-                    style={{ borderColor: "rgba(201,168,76,0.4)", color: "var(--gold)" }}
+                    className="rounded-full border px-3 py-1.5 text-xs transition-all duration-200 hover:bg-[rgba(0,220,130,0.12)]"
+                    style={{ borderColor: "rgba(0, 220, 130,0.4)", color: "var(--gold)" }}
                   >
                     {skill}
                   </span>
