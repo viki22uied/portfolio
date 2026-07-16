@@ -25,7 +25,17 @@ const achievements: Achievement[] = [
     side: "ALPHA",
     size: "53+ alphas",
     detail: "Achieved Gold Level on WorldQuant BRAIN platform with 53+ alpha submissions. Selected for the Research Consultant Program. IQC 2026 — Top 20% globally across 80,000+ participants from 142 countries.",
-    image: "/achievements/ieee-publication.png",
+    image: "/achievements/worldquant-gold.png",
+  },
+  {
+    ticker: "BRAIN.QF",
+    title: "Quantitative Finance — Starter Level",
+    issuer: "WorldQuant BRAIN Tutorial",
+    year: "2024",
+    side: "ALPHA",
+    size: "Starter",
+    detail: "Completed the WorldQuant BRAIN Tutorial's Quantitative Finance track at Starter Level — foundational coursework in alpha construction leading into the Gold Level track.",
+    image: "/achievements/brain-tutorial-starter.png",
   },
   {
     ticker: "IQC.26",
@@ -35,7 +45,7 @@ const achievements: Achievement[] = [
     side: "ALPHA",
     size: "80,000+ field",
     detail: "Ranked in the Top 20% globally at the International Quant Championship 2026 — 80,000+ participants across 142 countries. Competed in quantitative signal research, alpha development, and portfolio construction.",
-    image: "/achievements/tata-crucible.png",
+    image: "/achievements/iqc2026-stage1.png",
   },
   {
     ticker: "SEBI.30",
@@ -55,7 +65,7 @@ const achievements: Achievement[] = [
     side: "LONG",
     size: "Top 50 / GL",
     detail: "Ranked in the Top 50 globally at the Logitech DevStudio Hackathon 2026 with Deep Work AI Console — an AI-powered productivity plugin for the Logitech MX Creative Console.",
-    image: "/projects/deep-work-ai.png",
+    image: "/achievements/logitech-devstudio-top50.png",
   },
   {
     ticker: "IEEE.PUB",
@@ -220,13 +230,11 @@ export function Achievements() {
             );
           })}
 
-          {/* Blotter footer */}
           <div
             className="flex items-center justify-between border-t px-5 py-2.5 text-[10px] uppercase tracking-[0.2em]"
             style={{ ...mono, borderColor: "var(--border-color)", color: "var(--text-secondary)" }}
           >
-            <span>{achievements.length} positions · 0 rejected</span>
-            <span style={{ color: "var(--green)" }}>● all fills confirmed</span>
+            <span>{achievements.length} recognitions</span>
           </div>
         </div>
       </div>

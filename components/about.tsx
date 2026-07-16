@@ -17,7 +17,7 @@ const stats = [
   { label: "CGPA", display: "7.76", suffix: " / 10.0", numeric: false },
   { label: "Alphas Submitted", display: "53", suffix: "+", target: 53 },
   { label: "Countries Competed", display: "142", suffix: "", target: 142 },
-  { label: "Participants Beaten", display: "80000", suffix: "+", target: 80000, compact: true },
+  { label: "IQC 2026 Field Size", display: "80000", suffix: "+", target: 80000, compact: true },
 ];
 
 export function About() {
@@ -105,9 +105,9 @@ export function About() {
             {typed}
             <span className="inline-block w-2 animate-pulse" style={{ color: "var(--gold)" }}>|</span>
           </pre>
-          <p className="mt-6 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+          <p className="prose-serif mt-6" style={{ color: "var(--text-secondary)" }}>
             Final-year B.Tech student (ISE — AI &amp; Data Science) at Presidency University, Bengaluru, graduating May 2026.
-            IEEE published researcher. WorldQuant BRAIN Gold Level with 53+ alphas submitted across 142 countries — IQC 2026 Top 20% globally (80,000+ participants).
+            IEEE published researcher. WorldQuant BRAIN Gold Level with 53+ alphas submitted — IQC 2026 Top 20% globally across a 142-country, 80,000+ participant field.
             SEBI Global FinTech Festival 2025 Top 30 National. Building at the intersection of quantitative finance, AI engineering, and data infrastructure.
           </p>
           <a

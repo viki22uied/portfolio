@@ -20,7 +20,7 @@ const responses: Record<string, { text: string; scrollTo?: string; action?: stri
   resume: { text: "Downloading your resume now...", action: "download_resume" },
   achievements: { text: "IEEE published researcher (ISAECT 2025), Mumbai Hacks Top 100 out of 3500+ teams, IIT Madras Design Blitz 1st Runner-Up, and Tata Crucible Quiz Karnataka Cluster Finalist.", scrollTo: "achievements" },
   about: { text: "Final-year Data Science student at Presidency University (graduating May 2026). IEEE published researcher, Mumbai Hacks Top 100 finalist, and builder of AI-driven financial tools.", scrollTo: "about" },
-  contact: { text: "Reach me at vigneshkumaru24@gmail.com or +91 9880570570. Based in Bengaluru.", scrollTo: "contact" },
+  contact: { text: "Reach me at vigneshkumaru24@gmail.com. Based in Bengaluru.", scrollTo: "contact" },
 
   ieee: { text: "Published 'AI-Enhanced PGRKAM Employment Analytics Platform' at IEEE ISAECT 2025. Research focused on AI/ML techniques for employment data analytics.", scrollTo: "achievements" },
   research: { text: "Published 'AI-Enhanced PGRKAM Employment Analytics Platform' at IEEE ISAECT 2025.", scrollTo: "achievements" },

@@ -18,17 +18,9 @@ export function Publications() {
           className="mt-10"
         >
           <article
-            className="system-shell quant-scanline relative overflow-hidden p-6 md:p-8"
+            className="system-shell relative overflow-hidden p-6 md:p-8"
             style={{ borderColor: "rgba(0, 220, 130,0.3)" }}
           >
-            {/* Scanline shimmer */}
-            <div
-              className="pointer-events-none absolute inset-0 rounded-[inherit]"
-              style={{
-                background: "repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(0, 220, 130,0.018) 4px)",
-              }}
-            />
-
             <div className="relative z-10 flex flex-col gap-6 md:flex-row md:items-start md:gap-10">
               {/* IEEE badge */}
               <div className="flex-shrink-0">
@@ -57,7 +49,7 @@ export function Publications() {
                   Vignesh Kumar U · IEEE ISAECT 2025
                 </p>
 
-                <p className="mt-4 text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                <p className="prose-serif mt-4 text-[0.95rem]" style={{ color: "var(--text-secondary)" }}>
                   Applies machine learning and AI to employment data from the PGRKAM scheme to derive actionable workforce optimization insights and policy recommendations.
                   Demonstrates end-to-end analytics pipeline design for government employment data at scale.
                 </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { X, Github, ExternalLink, Play, ChevronLeft, ChevronRight, Zap, ShieldCheck, Wallet, BookOpen } from "lucide-react";
 import { SectionLabel } from "@/components/section-label";
@@ -8,7 +8,6 @@ import { SectionLabel } from "@/components/section-label";
 interface Project {
   id: string;
   ticker: string;
-  rating: string;
   title: string;
   subtitle: string;
   longDescription: string;
@@ -29,7 +28,6 @@ const projects: Project[] = [
   {
     id: "deep-work-ai",
     ticker: "DWAI",
-    rating: "STRONG BUY",
     title: "Deep Work AI Console",
     subtitle: "Top 50 Globally — Logitech DevStudio 2026",
     longDescription: "AI-powered deep work plugin for the Logitech MX Creative Console. Integrates with Logitech Options+ via the SDK to provide Meeting Mode, Context Anchoring, Queue Interruption management, and workspace restoration. Built with a Python service layer, PyQt6 timeline UI overlay, scikit-learn focus scoring, and Node.js IPC bridge for hardware-mapped controls.",
@@ -48,7 +46,6 @@ const projects: Project[] = [
   {
     id: "fraud-detection",
     ticker: "FRDX",
-    rating: "OVERWEIGHT",
     title: "Financial Crime Detection Pipeline",
     subtitle: "Graph analytics on 1M+ transactions",
     longDescription: "End-to-end fraud detection pipeline processing 1M+ financial transactions. Used NetworkX graph analytics — Strongly Connected Components and Betweenness Centrality — to surface hidden money-laundering rings. Built risk scoring with scikit-learn ensemble models, visualized via Tableau dashboards, containerised with Docker for production deployment.",
@@ -65,7 +62,6 @@ const projects: Project[] = [
   {
     id: "hercules-finance",
     ticker: "HERC",
-    rating: "STRONG BUY",
     title: "Hercules Finance AI",
     subtitle: "Top 30 National — SEBI Global FinTech Festival 2025",
     longDescription: "Financial planning platform for gig workers — Top 30 National at SEBI Global FinTech Festival 2025. Built income forecasting tailored to non-linear income streams, crisis simulation, and financial risk modelling. Gemini AI powers personalized recommendations. Multilingual interface. Also placed Top 100 out of 3,500+ teams at Mumbai Hacks 2025.",
@@ -82,7 +78,6 @@ const projects: Project[] = [
   {
     id: "ai-learning-aid",
     ticker: "LRNA",
-    rating: "BUY",
     title: "AI-Powered Learning Aid",
     subtitle: "Semantic search across 1000+ educational resources",
     longDescription: "Intelligent learning platform using FAISS + Qdrant vector search to surface semantically relevant educational resources across 1000+ curated materials. FastAPI backend with async endpoints. Docker-compose deployment. Supports multi-modal search, citation clustering, and adaptive study path generation using embedding-based similarity.",
@@ -114,39 +109,6 @@ function statusColor(s: Project["status"]) {
   if (s === "Live") return "bg-[var(--green)]";
   if (s === "In Development") return "bg-[var(--amber)]";
   return "bg-[var(--text-secondary)]";
-}
-
-/* Deterministic per-ticker uptrending sparkline so SSR/CSR match */
-function sparkPoints(seed: string): string {
-  let h = 0;
-  for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
-  const rand = () => {
-    h = (h * 1664525 + 1013904223) >>> 0;
-    return h / 4294967296;
-  };
-  const pts: string[] = [];
-  let y = 30;
-  for (let i = 0; i <= 24; i++) {
-    y = Math.max(4, Math.min(36, y - 0.9 + (rand() - 0.45) * 7));
-    pts.push(`${(i / 24) * 120},${y}`);
-  }
-  return pts.join(" ");
-}
-
-function Sparkline({ seed }: { seed: string }) {
-  const pts = useMemo(() => sparkPoints(seed), [seed]);
-  return (
-    <svg viewBox="0 0 120 40" className="h-8 w-28" aria-hidden>
-      <polyline
-        points={pts}
-        fill="none"
-        stroke="var(--green)"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-        style={{ filter: "drop-shadow(0 0 3px rgba(0,220,130,0.6))" }}
-      />
-    </svg>
-  );
 }
 
 function ProjectImage({ src, alt, icon, title }: { src: string; alt: string; icon?: React.ReactNode; title?: string }) {
@@ -322,14 +284,11 @@ export function Projects() {
                     <div>
                       <div className="flex flex-wrap items-center gap-3">
                         <span className="text-lg font-bold" style={{ ...mono, color: "var(--gold)" }}>${p.ticker}</span>
-                        <span
-                          className="rounded border px-2 py-0.5 text-[10px] font-bold tracking-widest"
-                          style={{ ...mono, borderColor: "rgba(0,220,130,0.45)", color: "var(--green)", background: "rgba(0,220,130,0.08)" }}
-                        >
-                          {p.rating}
+                        <span className="flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest" style={{ ...mono, color: "var(--text-secondary)" }}>
+                          <span className={`inline-block h-1.5 w-1.5 rounded-full ${statusColor(p.status)}`} />
+                          {p.status}
                         </span>
                         <span className="text-xs" style={{ ...mono, color: "var(--text-secondary)" }}>{p.year}</span>
-                        <span className="ml-auto hidden md:block"><Sparkline seed={p.ticker} /></span>
                       </div>
                       <h3 className="mt-3 text-xl font-bold md:text-2xl" style={{ color: "var(--text-primary)" }}>{p.title}</h3>
                       <p className="mt-1 text-sm" style={{ color: "var(--amber)" }}>{p.subtitle}</p>
